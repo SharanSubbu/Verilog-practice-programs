@@ -1,0 +1,27 @@
+verilog 
+
+module half_adder(sum,carry,in1,in2);
+	output sum,carry;
+	input in1,in2;
+	assign sum=in1^in2;
+	assign carry=in1&in2;
+endmodule
+
+module sr_flipflop(q,q_bar,s,r,clk);
+	input s,r,clk;
+	output q,q_bar;
+	wire w1,w2;
+	and (w1,s,clk);
+	and (w2,r,clk);
+	nor (q,q_bar,w1);
+	nor (q_bar,q,w2);
+endmodule
+
+module jk_flipflop(q,q_bar,j,k,clk)
+	input j,k,clk;
+	output q,q_bar;
+	wire w1,w2;
+	nand (w1,clk,j,q_bar);
+	nand (w2,clk,k,q);
+	nand (q,w1,q_bar);
+	nand (q_bar,w2,q);
