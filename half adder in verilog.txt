@@ -1,0 +1,38 @@
+full adder takes in 3 inputs and gives sum and carry as outputs
+
+gate level modeling/ structural modeling
+
+"""
+module full_adder_gatelevel(sum,carry,a,b,c);
+input a,b,c;
+output sum,carry;
+wire w1,w2,w3;
+xor g1(w1,a,b);
+xor g2(sum,w1,c);
+and g3(w3,a,b);
+and g4(w2,c,w1);
+or g5(carry,w2,w3);
+endmodule
+
+"""
+register transfer level modeling/ dataflow modeling
+
+"""
+module full_adder_dataflowlevel(sum,carry,a,b,c);
+input a,b,c;
+output sum,carry;
+assign sum=a^b^c;
+assign carry=a&b+c&(a^b);
+endmodule
+
+"""
+behavioral modeling
+
+"""
+module full_adder_behviorallevel(sum,carry,a,b,c);
+input a,b,c;
+output sum,carry;
+assign {carry,sum}=a+b+c;
+endmodule
+
+"""
