@@ -1,0 +1,21 @@
+"""
+module 2byonemux(y,s,a,b);
+output y;
+input s,a,b;
+assign y=(s)?(b):(a);
+end module
+
+"""
+designing 4 by 1 mux using already designed 2 by one mux
+
+"""
+module 4by1mux(y,a,b,c,d,s0,s1);
+output y;
+input a,b,c,d,s0,s1;
+wire w1,w2;
+2byonemux ins1(w1,s0,a,b);
+2byonemux ins2(w2,s0,c,d);
+2byonemux ins3(y,s1,w1,w2);
+end module
+
+"""
